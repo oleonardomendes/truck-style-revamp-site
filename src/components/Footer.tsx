@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="text-3xl font-bold mb-4 text-accent">
-              LS7 CAMINHÕES
+              MODESTO CAMINHÕES
             </div>
             <p className="text-background/80 mb-6">
               Há mais de 20 anos no mercado de caminhões seminovos, oferecendo qualidade, 
@@ -75,7 +75,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-background/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-background/60 text-sm">
-            © 2024 LS7 Caminhões. Todos os direitos reservados.
+            © 2024 Modesto Caminhões. Todos os direitos reservados.
           </p>
           <div className="flex space-x-6 text-sm text-background/60 mt-4 md:mt-0">
             <a href="#" className="hover:text-accent transition-colors">Política de Privacidade</a>

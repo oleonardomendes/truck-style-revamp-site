@@ -35,7 +35,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="text-2xl font-bold text-gradient">
-              LS7 CAMINHÕES
+              MODESTO CAMINHÕES
             </div>
           </div>
 
