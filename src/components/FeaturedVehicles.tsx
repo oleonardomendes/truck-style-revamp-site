@@ -50,26 +50,26 @@ const FeaturedVehicles = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-b from-background to-secondary/30">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-background to-secondary/30">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gradient mb-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-3 sm:mb-4">
             Veículos em Destaque
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Confira nossa seleção especial de caminhões seminovos com as melhores condições e garantia de qualidade
           </p>
         </div>
 
         {/* Vehicles Grid */}
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {[1, 2, 3, 4].map((i) => (
               <Card key={i} className="overflow-hidden animate-pulse">
-                <div className="h-48 bg-muted"></div>
-                <CardContent className="p-6">
-                  <div className="space-y-3">
+                <div className="h-40 sm:h-48 bg-muted"></div>
+                <CardContent className="p-4 sm:p-6">
+                  <div className="space-y-2 sm:space-y-3">
                     <div className="h-4 bg-muted rounded w-1/2"></div>
                     <div className="h-6 bg-muted rounded"></div>
                     <div className="h-4 bg-muted rounded w-3/4"></div>
@@ -81,7 +81,7 @@ const FeaturedVehicles = () => {
             ))}
           </div>
         ) : vehicles.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {vehicles.map((vehicle) => (
               <Card 
                 key={vehicle.id} 
@@ -89,57 +89,58 @@ const FeaturedVehicles = () => {
               >
                 <div className="relative overflow-hidden">
                   {vehicle.featured && (
-                    <Badge className="absolute top-3 left-3 z-10 bg-accent text-accent-foreground">
+                    <Badge className="absolute top-2 sm:top-3 left-2 sm:left-3 z-10 bg-accent text-accent-foreground text-xs">
                       Destaque
                     </Badge>
                   )}
                   <img 
                     src={vehicle.image || fallbackImages[vehicle.brand] || truckVolvo} 
                     alt={`${vehicle.brand} ${vehicle.model}`}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-6">
                   <div className="mb-3">
                     <Badge variant="outline" className="text-xs mb-2">
                       {vehicle.brand}
                     </Badge>
-                    <h3 className="font-bold text-lg mb-1">
+                    <h3 className="font-bold text-base sm:text-lg mb-1">
                       {vehicle.brand} {vehicle.model}
                     </h3>
-                    <p className="text-sm text-muted-foreground mb-2">
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-2">
                       {vehicle.year}
                     </p>
                   </div>
 
-                  <div className="space-y-2 mb-4 text-sm">
+                  <div className="space-y-1 sm:space-y-2 mb-3 sm:mb-4 text-xs sm:text-sm">
                     <div className="flex items-center gap-2 text-muted-foreground">
-                      <Wrench className="h-4 w-4" />
-                      <span>{vehicle.type}</span>
+                      <Wrench className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                      <span className="truncate">{vehicle.type}</span>
                     </div>
                     <div className="flex items-center gap-2 text-muted-foreground">
-                      <Truck className="h-4 w-4" />
+                      <Truck className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
                       <span>{vehicle.km.toLocaleString()} km</span>
                     </div>
                     <div className="flex items-center gap-2 text-muted-foreground">
-                      <Calendar className="h-4 w-4" />
-                      <span>{vehicle.category}</span>
+                      <Calendar className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                      <span className="truncate">{vehicle.category}</span>
                     </div>
                   </div>
 
-                  <div className="mb-4">
-                    <p className="text-2xl font-bold text-primary">
+                  <div className="mb-3 sm:mb-4">
+                    <p className="text-lg sm:text-xl md:text-2xl font-bold text-primary">
                       R$ {vehicle.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                     </p>
                   </div>
 
                   <Button 
-                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                    className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors text-xs sm:text-sm"
                     variant="outline"
+                    size="sm"
                   >
-                    <Eye className="h-4 w-4 mr-2" />
+                    <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                     Mais detalhes
                   </Button>
                 </CardContent>
@@ -147,18 +148,18 @@ const FeaturedVehicles = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg">
+          <div className="text-center py-8 sm:py-12">
+            <p className="text-muted-foreground text-base sm:text-lg">
               Nenhum veículo em destaque no momento.
             </p>
           </div>
         )}
 
         {/* View All Button */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-8 sm:mt-12">
           <Button 
             size="lg" 
-            className="btn-hero text-lg px-8 py-3"
+            className="btn-hero text-sm sm:text-base md:text-lg px-6 sm:px-8 py-2 sm:py-3 w-full sm:w-auto"
           >
             Ver Todos os Veículos
           </Button>
