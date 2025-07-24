@@ -35,17 +35,17 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 mt-1 text-accent" />
                 <div>
-                  <p>Rod. Anhanguera - KM 143, S/N</p>
-                  <p>Loiolas, Limeira/SP</p>
+                  <p>Rua das Indústrias, 123</p>
+                  <p>Centro, Iperó/SP</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-accent" />
-                <p>(19) 99610-5675</p>
+                <p>(15) 99824-2856</p>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-accent" />
-                <p>contato@ls7caminhoes.com.br</p>
+                <p>modestocaminhoes@gmail.com</p>
               </div>
             </div>
           </div>

@@ -30,7 +30,7 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">
-            Por que escolher a LS7?
+            Por que escolher a Modesto Caminhões?
           </h2>
           <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
             Mais de 20 anos de experiência no mercado de caminhões seminovos

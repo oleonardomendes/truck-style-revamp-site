@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, MapPin, MessageCircle } from "lucide-react";
+import modestoLogo from "@/assets/modesto-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,13 +14,13 @@ const Header = () => {
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              <span>Rod. Anhanguera - KM 143, S/N - Loiolas, Limeira/SP</span>
+              <span>Rua das Indústrias, 123 - Centro, Iperó/SP</span>
             </div>
           </div>
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
-              <span>(19) 99610-5675</span>
+              <span>(15) 99824-2856</span>
             </div>
             <div className="flex items-center gap-2">
               <MessageCircle className="h-4 w-4" />
@@ -33,7 +34,12 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center gap-3">
+            <img 
+              src={modestoLogo} 
+              alt="Modesto Caminhões" 
+              className="h-10 w-10"
+            />
             <div className="text-2xl font-bold text-gradient">
               MODESTO CAMINHÕES
             </div>
