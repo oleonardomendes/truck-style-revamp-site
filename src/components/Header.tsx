@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, MapPin, MessageCircle } from "lucide-react";
-import modestoLogo from "@/assets/modesto-logo.png";
+const modestoLogo = "/lovable-uploads/21f890e2-f157-4fc9-9288-de21d73ddf32.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,16 +37,12 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center">
             <img 
               src={modestoLogo} 
               alt="Modesto Caminhões" 
-              className="h-8 w-8 sm:h-10 sm:w-10"
+              className="h-8 sm:h-10 md:h-12 w-auto"
             />
-            <div className="text-lg sm:text-xl md:text-2xl font-bold text-gradient">
-              <span className="hidden sm:inline">MODESTO CAMINHÕES</span>
-              <span className="sm:hidden">MODESTO</span>
-            </div>
           </div>
 
           {/* Desktop Navigation */}
