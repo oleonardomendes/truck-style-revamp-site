@@ -9,10 +9,11 @@ import truckVolvo from "@/assets/truck-volvo.jpg";
 import truckScania from "@/assets/truck-scania.jpg";
 import truckMercedes from "@/assets/truck-mercedes.jpg";
 
-type Vehicle = Tables<'vehicles'>;
+// Public vehicle type that excludes sensitive data
+type PublicVehicle = Omit<Tables<'vehicles'>, 'owner_phone'>;
 
 const FeaturedVehicles = () => {
-  const [vehicles, setVehicles] = useState<Vehicle[]>([]);
+  const [vehicles, setVehicles] = useState<PublicVehicle[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Fallback images map
@@ -31,7 +32,7 @@ const FeaturedVehicles = () => {
     try {
       const { data, error } = await supabase
         .from('vehicles')
-        .select('*')
+        .select('id, brand, model, year, price, km, type, category, image, featured, created_at, updated_at')
         .eq('featured', true)
         .order('created_at', { ascending: false })
         .limit(4);
