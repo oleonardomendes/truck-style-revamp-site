@@ -436,11 +436,22 @@ const AdminDashboard = () => {
   );
 };
 
+const AUTHORIZED_ADMIN_EMAIL = 'contato.turi8n@gmail.com';
+
 const Admin = () => {
-  const { user, loading, signIn, signUp } = useAuth();
+  const { user, loading, signIn, signUp, signOut } = useAuth();
   const { toast } = useToast();
 
   const handleLogin = async (email: string, password: string) => {
+    if (email !== AUTHORIZED_ADMIN_EMAIL) {
+      toast({
+        title: "Acesso negado",
+        description: "Este email não tem permissão para acessar a área administrativa.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const { error } = await signIn(email, password);
     if (error) {
       toast({
@@ -452,6 +463,15 @@ const Admin = () => {
   };
 
   const handleSignUp = async (email: string, password: string) => {
+    if (email !== AUTHORIZED_ADMIN_EMAIL) {
+      toast({
+        title: "Acesso negado",
+        description: "Este email não tem permissão para criar conta administrativa.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const { error } = await signUp(email, password);
     if (error) {
       toast({
@@ -477,6 +497,29 @@ const Admin = () => {
 
   if (!user) {
     return <AdminLogin onLogin={handleLogin} onSignUp={handleSignUp} />;
+  }
+
+  // Verificar se o usuário logado é o email autorizado
+  if (user.email !== AUTHORIZED_ADMIN_EMAIL) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <Card className="w-full max-w-md">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl font-bold text-gradient">
+              Acesso Negado
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="text-center">
+            <p className="text-muted-foreground mb-4">
+              Você não tem permissão para acessar esta área.
+            </p>
+            <Button onClick={async () => await signOut()} variant="outline">
+              Fazer Logout
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
   }
 
   return <AdminDashboard />;
