@@ -62,6 +62,9 @@ const Header = () => {
             <a href="#" className="text-foreground hover:text-primary transition-colors font-medium text-sm xl:text-base">
               CONTATO
             </a>
+            <a href="/admin" className="text-muted-foreground hover:text-primary transition-colors font-medium text-xs xl:text-sm">
+              ADMIN
+            </a>
           </nav>
 
           {/* Mobile menu button */}
@@ -93,6 +96,9 @@ const Header = () => {
               </a>
               <a href="#" className="text-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2">
                 CONTATO
+              </a>
+              <a href="/admin" className="text-muted-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2 text-sm">
+                ADMIN
               </a>
             </div>
           </nav>

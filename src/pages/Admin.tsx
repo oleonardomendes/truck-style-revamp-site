@@ -14,15 +14,20 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, Plus, Edit, Trash2, LogOut } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 
-const AdminLogin = ({ onLogin }: { onLogin: (email: string, password: string) => void }) => {
+const AdminLogin = ({ onLogin, onSignUp }: { onLogin: (email: string, password: string) => void; onSignUp: (email: string, password: string) => void }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await onLogin(email, password);
+    if (isSignUp) {
+      await onSignUp(email, password);
+    } else {
+      await onLogin(email, password);
+    }
     setLoading(false);
   };
 
@@ -59,7 +64,15 @@ const AdminLogin = ({ onLogin }: { onLogin: (email: string, password: string) =>
             </div>
             <Button type="submit" className="w-full" disabled={loading}>
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Entrar
+              {isSignUp ? 'Cadastrar' : 'Entrar'}
+            </Button>
+            <Button 
+              type="button" 
+              variant="outline" 
+              className="w-full" 
+              onClick={() => setIsSignUp(!isSignUp)}
+            >
+              {isSignUp ? 'Já tem conta? Fazer login' : 'Criar nova conta'}
             </Button>
           </form>
         </CardContent>
@@ -424,7 +437,7 @@ const AdminDashboard = () => {
 };
 
 const Admin = () => {
-  const { user, loading, signIn } = useAuth();
+  const { user, loading, signIn, signUp } = useAuth();
   const { toast } = useToast();
 
   const handleLogin = async (email: string, password: string) => {
@@ -438,6 +451,22 @@ const Admin = () => {
     }
   };
 
+  const handleSignUp = async (email: string, password: string) => {
+    const { error } = await signUp(email, password);
+    if (error) {
+      toast({
+        title: "Erro ao criar conta",
+        description: error.message,
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Conta criada com sucesso!",
+        description: "Verifique seu email para confirmar o cadastro.",
+      });
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -447,7 +476,7 @@ const Admin = () => {
   }
 
   if (!user) {
-    return <AdminLogin onLogin={handleLogin} />;
+    return <AdminLogin onLogin={handleLogin} onSignUp={handleSignUp} />;
   }
 
   return <AdminDashboard />;
