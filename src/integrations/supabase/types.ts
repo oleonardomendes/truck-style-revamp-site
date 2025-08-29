@@ -16,57 +16,93 @@ export type Database = {
     Tables: {
       vehicles: {
         Row: {
+          air_conditioning: boolean | null
+          automatic_transmission: boolean | null
           body_type: string | null
           brand: string
           category: string
+          climate_control: boolean | null
+          color: string | null
           created_at: string
           featured: boolean | null
+          fleet_renewal: boolean | null
+          high_roof: boolean | null
           id: string
           image: string | null
           km: number
+          km_range_500_600: boolean | null
           model: string
           model_year: number | null
+          multiple_units: boolean | null
+          onboard_computer: boolean | null
           owner_phone: string
+          power_steering: boolean | null
           price: number
+          sleeper_cabin: boolean | null
           traction: string | null
           type: string
           updated_at: string
+          vehicle_details: string | null
           year: number
         }
         Insert: {
+          air_conditioning?: boolean | null
+          automatic_transmission?: boolean | null
           body_type?: string | null
           brand: string
           category?: string
+          climate_control?: boolean | null
+          color?: string | null
           created_at?: string
           featured?: boolean | null
+          fleet_renewal?: boolean | null
+          high_roof?: boolean | null
           id?: string
           image?: string | null
           km: number
+          km_range_500_600?: boolean | null
           model: string
           model_year?: number | null
+          multiple_units?: boolean | null
+          onboard_computer?: boolean | null
           owner_phone: string
+          power_steering?: boolean | null
           price: number
+          sleeper_cabin?: boolean | null
           traction?: string | null
           type?: string
           updated_at?: string
+          vehicle_details?: string | null
           year: number
         }
         Update: {
+          air_conditioning?: boolean | null
+          automatic_transmission?: boolean | null
           body_type?: string | null
           brand?: string
           category?: string
+          climate_control?: boolean | null
+          color?: string | null
           created_at?: string
           featured?: boolean | null
+          fleet_renewal?: boolean | null
+          high_roof?: boolean | null
           id?: string
           image?: string | null
           km?: number
+          km_range_500_600?: boolean | null
           model?: string
           model_year?: number | null
+          multiple_units?: boolean | null
+          onboard_computer?: boolean | null
           owner_phone?: string
+          power_steering?: boolean | null
           price?: number
+          sleeper_cabin?: boolean | null
           traction?: string | null
           type?: string
           updated_at?: string
+          vehicle_details?: string | null
           year?: number
         }
         Relationships: []

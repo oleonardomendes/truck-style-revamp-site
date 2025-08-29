@@ -101,6 +101,18 @@ const VehicleForm = ({
     category: vehicle?.category || 'Seminovo',
     traction: vehicle?.traction || '',
     body_type: vehicle?.body_type || '',
+    color: vehicle?.color || '',
+    power_steering: vehicle?.power_steering || false,
+    high_roof: vehicle?.high_roof || false,
+    air_conditioning: vehicle?.air_conditioning || false,
+    climate_control: vehicle?.climate_control || false,
+    sleeper_cabin: vehicle?.sleeper_cabin || false,
+    onboard_computer: vehicle?.onboard_computer || false,
+    automatic_transmission: vehicle?.automatic_transmission || false,
+    vehicle_details: vehicle?.vehicle_details || '',
+    multiple_units: vehicle?.multiple_units || false,
+    fleet_renewal: vehicle?.fleet_renewal || false,
+    km_range_500_600: vehicle?.km_range_500_600 || false,
     image: vehicle?.image || '',
     owner_phone: vehicle?.owner_phone || '',
     featured: vehicle?.featured || false,
@@ -231,14 +243,138 @@ const VehicleForm = ({
         />
       </div>
 
+      <div className="grid grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="category">Categoria</Label>
+          <Input
+            id="category"
+            value={formData.category}
+            onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+            placeholder="ex: Seminovo, Novo"
+          />
+        </div>
+        <div>
+          <Label htmlFor="color">Cor</Label>
+          <Input
+            id="color"
+            value={formData.color}
+            onChange={(e) => setFormData({ ...formData, color: e.target.value })}
+            placeholder="ex: Branco, Azul"
+          />
+        </div>
+      </div>
+
       <div>
-        <Label htmlFor="category">Categoria</Label>
-        <Input
-          id="category"
-          value={formData.category}
-          onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-          placeholder="ex: Seminovo, Novo"
+        <Label htmlFor="vehicle_details">Detalhes do Veículo</Label>
+        <textarea
+          id="vehicle_details"
+          value={formData.vehicle_details}
+          onChange={(e) => setFormData({ ...formData, vehicle_details: e.target.value })}
+          className="w-full p-2 border border-input rounded-md bg-background text-foreground min-h-20"
+          placeholder="Descreva detalhes específicos do veículo..."
         />
+      </div>
+
+      {/* Opcionais */}
+      <div className="space-y-4">
+        <Label className="text-base font-semibold">Opcionais</Label>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="power_steering"
+              checked={formData.power_steering}
+              onCheckedChange={(checked) => setFormData({ ...formData, power_steering: checked })}
+            />
+            <Label htmlFor="power_steering">Direção Hidráulica</Label>
+          </div>
+          
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="high_roof"
+              checked={formData.high_roof}
+              onCheckedChange={(checked) => setFormData({ ...formData, high_roof: checked })}
+            />
+            <Label htmlFor="high_roof">Teto Alto</Label>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="air_conditioning"
+              checked={formData.air_conditioning}
+              onCheckedChange={(checked) => setFormData({ ...formData, air_conditioning: checked })}
+            />
+            <Label htmlFor="air_conditioning">Ar Condicionado</Label>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="climate_control"
+              checked={formData.climate_control}
+              onCheckedChange={(checked) => setFormData({ ...formData, climate_control: checked })}
+            />
+            <Label htmlFor="climate_control">Climatizador</Label>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="sleeper_cabin"
+              checked={formData.sleeper_cabin}
+              onCheckedChange={(checked) => setFormData({ ...formData, sleeper_cabin: checked })}
+            />
+            <Label htmlFor="sleeper_cabin">Cabine Leito</Label>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="onboard_computer"
+              checked={formData.onboard_computer}
+              onCheckedChange={(checked) => setFormData({ ...formData, onboard_computer: checked })}
+            />
+            <Label htmlFor="onboard_computer">Computador de Bordo</Label>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="automatic_transmission"
+              checked={formData.automatic_transmission}
+              onCheckedChange={(checked) => setFormData({ ...formData, automatic_transmission: checked })}
+            />
+            <Label htmlFor="automatic_transmission">Câmbio Automático</Label>
+          </div>
+        </div>
+      </div>
+
+      {/* Informações Adicionais */}
+      <div className="space-y-4">
+        <Label className="text-base font-semibold">Informações Adicionais</Label>
+        <div className="grid grid-cols-1 gap-4">
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="multiple_units"
+              checked={formData.multiple_units}
+              onCheckedChange={(checked) => setFormData({ ...formData, multiple_units: checked })}
+            />
+            <Label htmlFor="multiple_units">Várias Unidades</Label>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="fleet_renewal"
+              checked={formData.fleet_renewal}
+              onCheckedChange={(checked) => setFormData({ ...formData, fleet_renewal: checked })}
+            />
+            <Label htmlFor="fleet_renewal">Renovação de Frota</Label>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <Switch
+              id="km_range_500_600"
+              checked={formData.km_range_500_600}
+              onCheckedChange={(checked) => setFormData({ ...formData, km_range_500_600: checked })}
+            />
+            <Label htmlFor="km_range_500_600">De 500 a 600 mil km</Label>
+          </div>
+        </div>
       </div>
 
       <div className="flex items-center space-x-2">

@@ -33,7 +33,13 @@ const FeaturedVehicles = () => {
     try {
       const { data, error } = await supabase
         .from('vehicles')
-        .select('id, brand, model, year, model_year, price, km, type, category, image, featured, created_at, updated_at, traction, body_type')
+        .select(`
+          id, brand, model, year, model_year, price, km, type, category, 
+          image, featured, created_at, updated_at, traction, body_type,
+          color, power_steering, high_roof, air_conditioning, climate_control,
+          sleeper_cabin, onboard_computer, automatic_transmission, vehicle_details,
+          multiple_units, fleet_renewal, km_range_500_600
+        `)
         .eq('featured', true)
         .order('created_at', { ascending: false })
         .limit(4);
