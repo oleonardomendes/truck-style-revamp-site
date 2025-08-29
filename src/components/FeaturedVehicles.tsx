@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -32,7 +33,7 @@ const FeaturedVehicles = () => {
     try {
       const { data, error } = await supabase
         .from('vehicles')
-        .select('id, brand, model, year, price, km, type, category, image, featured, created_at, updated_at')
+        .select('id, brand, model, year, model_year, price, km, type, category, image, featured, created_at, updated_at, traction, body_type')
         .eq('featured', true)
         .order('created_at', { ascending: false })
         .limit(4);
@@ -84,10 +85,10 @@ const FeaturedVehicles = () => {
         ) : vehicles.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {vehicles.map((vehicle) => (
-              <Card 
-                key={vehicle.id} 
-                className="group card-hover bg-gradient-card border-0 shadow-card overflow-hidden"
-              >
+              <Link key={vehicle.id} to={`/veiculo/${vehicle.id}`}>
+                <Card 
+                  className="group card-hover bg-gradient-card border-0 shadow-card overflow-hidden cursor-pointer"
+                >
                 <div className="relative overflow-hidden">
                   {vehicle.featured && (
                     <Badge className="absolute top-2 sm:top-3 left-2 sm:left-3 z-10 bg-accent text-accent-foreground text-xs">
@@ -146,6 +147,7 @@ const FeaturedVehicles = () => {
                   </Button>
                 </CardContent>
               </Card>
+              </Link>
             ))}
           </div>
         ) : (

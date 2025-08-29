@@ -94,10 +94,13 @@ const VehicleForm = ({
     brand: vehicle?.brand || '',
     model: vehicle?.model || '',
     year: vehicle?.year || new Date().getFullYear(),
+    model_year: vehicle?.model_year || new Date().getFullYear(),
     price: vehicle?.price || 0,
     km: vehicle?.km || 0,
     type: vehicle?.type || 'Caminhão',
     category: vehicle?.category || 'Seminovo',
+    traction: vehicle?.traction || '',
+    body_type: vehicle?.body_type || '',
     image: vehicle?.image || '',
     owner_phone: vehicle?.owner_phone || '',
     featured: vehicle?.featured || false,
@@ -143,6 +146,18 @@ const VehicleForm = ({
           />
         </div>
         <div>
+          <Label htmlFor="model_year">Ano do Modelo</Label>
+          <Input
+            id="model_year"
+            type="number"
+            value={formData.model_year}
+            onChange={(e) => setFormData({ ...formData, model_year: parseInt(e.target.value) })}
+          />
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-2 gap-4">
+        <div>
           <Label htmlFor="price">Preço</Label>
           <Input
             id="price"
@@ -151,6 +166,15 @@ const VehicleForm = ({
             value={formData.price}
             onChange={(e) => setFormData({ ...formData, price: parseFloat(e.target.value) })}
             required
+          />
+        </div>
+        <div>
+          <Label htmlFor="traction">Tração</Label>
+          <Input
+            id="traction"
+            value={formData.traction}
+            onChange={(e) => setFormData({ ...formData, traction: e.target.value })}
+            placeholder="ex: 4x2, 6x4"
           />
         </div>
       </div>
@@ -167,11 +191,32 @@ const VehicleForm = ({
           />
         </div>
         <div>
+          <Label htmlFor="body_type">Tipo de Carroceria</Label>
+          <Input
+            id="body_type"
+            value={formData.body_type}
+            onChange={(e) => setFormData({ ...formData, body_type: e.target.value })}
+            placeholder="ex: Baú, Graneleiro, Basculante"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        <div>
           <Label htmlFor="owner_phone">Telefone do Proprietário</Label>
           <Input
             id="owner_phone"
             value={formData.owner_phone}
             onChange={(e) => setFormData({ ...formData, owner_phone: e.target.value })}
+            required
+          />
+        </div>
+        <div>
+          <Label htmlFor="type">Tipo</Label>
+          <Input
+            id="type"
+            value={formData.type}
+            onChange={(e) => setFormData({ ...formData, type: e.target.value })}
             required
           />
         </div>
@@ -183,6 +228,16 @@ const VehicleForm = ({
           id="image"
           value={formData.image}
           onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+        />
+      </div>
+
+      <div>
+        <Label htmlFor="category">Categoria</Label>
+        <Input
+          id="category"
+          value={formData.category}
+          onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+          placeholder="ex: Seminovo, Novo"
         />
       </div>
 
