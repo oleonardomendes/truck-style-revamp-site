@@ -118,6 +118,36 @@ const VehicleForm = ({
     featured: vehicle?.featured || false,
   });
 
+  const [uploading, setUploading] = useState(false);
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('vehicle-images')
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data } = supabase.storage
+        .from('vehicle-images')
+        .getPublicUrl(filePath);
+
+      setFormData({ ...formData, image: data.publicUrl });
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
@@ -235,12 +265,23 @@ const VehicleForm = ({
       </div>
 
       <div>
-        <Label htmlFor="image">URL da Imagem</Label>
+        <Label htmlFor="image">Imagem do Veículo</Label>
         <Input
           id="image"
-          value={formData.image}
-          onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+          type="file"
+          accept="image/*"
+          onChange={handleImageUpload}
+          className="cursor-pointer"
         />
+        {formData.image && (
+          <div className="mt-2">
+            <img 
+              src={formData.image} 
+              alt="Preview" 
+              className="w-32 h-24 object-cover rounded border"
+            />
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-2 gap-4">
