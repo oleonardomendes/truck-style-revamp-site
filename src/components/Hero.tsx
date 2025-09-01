@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import heroImage from "@/assets/hero-trucks.jpg";
+import heroImage2 from "@/assets/hero-trucks-2.jpg";
+import heroImage3 from "@/assets/hero-trucks-3.jpg";
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -14,13 +16,13 @@ const Hero = () => {
       description: "Encontre o veículo ideal para seu negócio com as melhores condições do mercado"
     },
     {
-      image: heroImage,
+      image: heroImage2,
       title: "Tradição e Confiança",
       subtitle: "Mais de 20 anos no mercado",
       description: "Especialistas em caminhões seminovos com garantia e procedência"
     },
     {
-      image: heroImage,
+      image: heroImage3,
       title: "Financiamento Facilitado",
       subtitle: "Condições especiais",
       description: "Parcelamento em até 60x com as menores taxas do mercado"

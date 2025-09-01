@@ -7,8 +7,12 @@ import { Eye, Calendar, Truck, Wrench } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Tables } from "@/integrations/supabase/types";
 import truckVolvo from "@/assets/truck-volvo.jpg";
+import truckVolvoBlue from "@/assets/truck-volvo-blue.jpg";
 import truckScania from "@/assets/truck-scania.jpg";
+import truckScaniaRed from "@/assets/truck-scania-red.jpg";
+import truckScaniaGreen from "@/assets/truck-scania-green.jpg";
 import truckMercedes from "@/assets/truck-mercedes.jpg";
+import truckDafWhite from "@/assets/truck-daf-white.jpg";
 
 // Public vehicle type that excludes sensitive data
 type PublicVehicle = Omit<Tables<'vehicles'>, 'owner_phone'>;
@@ -17,12 +21,22 @@ const FeaturedVehicles = () => {
   const [vehicles, setVehicles] = useState<PublicVehicle[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Fallback images map
-  const fallbackImages: Record<string, string> = {
-    'Volvo': truckVolvo,
-    'Scania': truckScania,
-    'Mercedes-Benz': truckMercedes,
-    'Mercedes': truckMercedes,
+  // Fallback images map with multiple images per brand
+  const fallbackImages: Record<string, string[]> = {
+    'Volvo': [truckVolvo, truckVolvoBlue],
+    'Scania': [truckScania, truckScaniaRed, truckScaniaGreen],
+    'Mercedes-Benz': [truckMercedes],
+    'Mercedes': [truckMercedes],
+    'DAF': [truckDafWhite],
+  };
+
+  // Function to get random image for brand
+  const getRandomImageForBrand = (brand: string): string => {
+    const brandImages = fallbackImages[brand];
+    if (brandImages && brandImages.length > 0) {
+      return brandImages[Math.floor(Math.random() * brandImages.length)];
+    }
+    return truckVolvo; // Default fallback
   };
 
   useEffect(() => {
@@ -102,7 +116,7 @@ const FeaturedVehicles = () => {
                     </Badge>
                   )}
                   <img 
-                    src={vehicle.image || fallbackImages[vehicle.brand] || truckVolvo} 
+                    src={vehicle.image || getRandomImageForBrand(vehicle.brand)} 
                     alt={`${vehicle.brand} ${vehicle.model}`}
                     className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />

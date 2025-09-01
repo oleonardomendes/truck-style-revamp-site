@@ -541,17 +541,19 @@ const AdminDashboard = () => {
                 Adicionar Veículo
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl">
+            <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle>
                   {editingVehicle ? 'Editar Veículo' : 'Adicionar Novo Veículo'}
                 </DialogTitle>
               </DialogHeader>
-              <VehicleForm
-                vehicle={editingVehicle}
-                onSubmit={editingVehicle ? handleUpdateVehicle : handleAddVehicle}
-                onClose={() => setIsDialogOpen(false)}
-              />
+              <div className="max-h-[75vh] overflow-y-auto pr-2">
+                <VehicleForm
+                  vehicle={editingVehicle}
+                  onSubmit={editingVehicle ? handleUpdateVehicle : handleAddVehicle}
+                  onClose={() => setIsDialogOpen(false)}
+                />
+              </div>
             </DialogContent>
           </Dialog>
         </div>
