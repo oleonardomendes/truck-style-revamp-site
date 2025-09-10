@@ -78,6 +78,17 @@ const Vehicles = () => {
       
       <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-background to-secondary/30">
         <div className="max-w-7xl mx-auto px-3 sm:px-4">
+          {/* Back Button */}
+          <div className="mb-6">
+            <Button 
+              variant="outline" 
+              onClick={() => window.history.back()}
+              className="flex items-center gap-2"
+            >
+              ← Voltar
+            </Button>
+          </div>
+
           {/* Section Header */}
           <div className="text-center mb-8 sm:mb-12">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4">

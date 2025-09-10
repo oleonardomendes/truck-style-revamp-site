@@ -78,12 +78,10 @@ const VehicleDetails = () => {
         <Card className="w-full max-w-md text-center">
           <CardContent className="p-6">
             <h2 className="text-xl font-bold mb-4">Veículo não encontrado</h2>
-            <Link to="/">
-              <Button>
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Voltar ao início
-              </Button>
-            </Link>
+            <Button onClick={() => window.history.back()}>
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Voltar
+            </Button>
           </CardContent>
         </Card>
       </div>
@@ -95,12 +93,10 @@ const VehicleDetails = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Cabeçalho com botão voltar */}
         <div className="mb-8">
-          <Link to="/">
-            <Button variant="outline" className="mb-4">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Voltar aos Veículos
-            </Button>
-          </Link>
+          <Button variant="outline" className="mb-4" onClick={() => window.history.back()}>
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Voltar
+          </Button>
           <h1 className="text-3xl font-bold text-gradient">
             {vehicle.brand} {vehicle.model}
           </h1>

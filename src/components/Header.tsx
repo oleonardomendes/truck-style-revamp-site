@@ -47,19 +47,19 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-4 xl:space-x-8">
-            <a href="#" className="text-foreground hover:text-primary transition-colors font-medium text-sm xl:text-base">
+            <a href="/" className="text-foreground hover:text-primary transition-colors font-medium text-sm xl:text-base">
               HOME
             </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors font-medium text-sm xl:text-base">
+            <a href="/#empresa" className="text-foreground hover:text-primary transition-colors font-medium text-sm xl:text-base">
               EMPRESA
             </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors font-medium text-sm xl:text-base">
+            <a href="/veiculos" className="text-foreground hover:text-primary transition-colors font-medium text-sm xl:text-base">
               SEMINOVOS
             </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors font-medium text-sm xl:text-base">
+            <a href="/#avaliacao" className="text-foreground hover:text-primary transition-colors font-medium text-sm xl:text-base">
               AVALIAÇÃO
             </a>
-            <a href="#" className="text-foreground hover:text-primary transition-colors font-medium text-sm xl:text-base">
+            <a href="/#contato" className="text-foreground hover:text-primary transition-colors font-medium text-sm xl:text-base">
               CONTATO
             </a>
             <a href="/admin" className="text-muted-foreground hover:text-primary transition-colors font-medium text-xs xl:text-sm">
@@ -82,19 +82,19 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="lg:hidden mt-4 pb-4 border-t pt-4">
             <div className="flex flex-col space-y-3 sm:space-y-4">
-              <a href="#" className="text-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2">
+              <a href="/" className="text-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2">
                 HOME
               </a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2">
+              <a href="/#empresa" className="text-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2">
                 EMPRESA
               </a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2">
+              <a href="/veiculos" className="text-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2">
                 SEMINOVOS
               </a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2">
+              <a href="/#avaliacao" className="text-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2">
                 AVALIAÇÃO
               </a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2">
+              <a href="/#contato" className="text-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2">
                 CONTATO
               </a>
               <a href="/admin" className="text-muted-foreground hover:text-primary transition-colors font-medium py-1 sm:py-2 text-sm">
