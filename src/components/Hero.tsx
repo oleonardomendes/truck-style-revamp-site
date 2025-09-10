@@ -72,13 +72,20 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="btn-hero text-sm sm:text-base md:text-lg px-6 sm:px-8 py-2 sm:py-3 w-full sm:w-auto"
+              onClick={() => {
+                const featuredSection = document.getElementById('featured-vehicles');
+                featuredSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               Ver Estoque
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
-              className="text-sm sm:text-base md:text-lg px-6 sm:px-8 py-2 sm:py-3 border-white text-white hover:bg-white hover:text-primary w-full sm:w-auto"
+              className="text-sm sm:text-base md:text-lg px-6 sm:px-8 py-2 sm:py-3 border-white/80 text-white bg-white/10 hover:bg-white hover:text-primary backdrop-blur-sm w-full sm:w-auto"
+              onClick={() => {
+                window.open('https://wa.me/5511999999999?text=Olá! Tenho interesse em conhecer os caminhões disponíveis.', '_blank');
+              }}
             >
               Fale Conosco
             </Button>

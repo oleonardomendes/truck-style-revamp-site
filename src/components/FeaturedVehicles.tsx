@@ -72,7 +72,7 @@ const FeaturedVehicles = () => {
   };
 
   return (
-    <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-background to-secondary/30">
+    <section id="featured-vehicles" className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-background to-secondary/30">
       <div className="max-w-7xl mx-auto px-3 sm:px-4">
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-12">
