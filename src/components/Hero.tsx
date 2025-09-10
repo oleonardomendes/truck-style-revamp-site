@@ -73,8 +73,7 @@ const Hero = () => {
               size="lg" 
               className="btn-hero text-sm sm:text-base md:text-lg px-6 sm:px-8 py-2 sm:py-3 w-full sm:w-auto"
               onClick={() => {
-                const featuredSection = document.getElementById('featured-vehicles');
-                featuredSection?.scrollIntoView({ behavior: 'smooth' });
+                window.location.href = '/veiculos';
               }}
             >
               Ver Estoque

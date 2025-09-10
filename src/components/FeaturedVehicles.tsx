@@ -183,6 +183,9 @@ const FeaturedVehicles = () => {
           <Button 
             size="lg" 
             className="btn-hero text-sm sm:text-base md:text-lg px-6 sm:px-8 py-2 sm:py-3 w-full sm:w-auto"
+            onClick={() => {
+              window.location.href = '/veiculos';
+            }}
           >
             Ver Todos os Veículos
           </Button>
