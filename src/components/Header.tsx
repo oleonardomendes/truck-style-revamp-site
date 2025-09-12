@@ -41,7 +41,7 @@ const Header = () => {
             <img 
               src={modestoLogo} 
               alt="Modesto Caminhões" 
-              className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto max-w-[320px] sm:max-w-[400px] md:max-w-[480px] lg:max-w-[560px] xl:max-w-[640px]"
+              className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto max-w-[480px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[840px] xl:max-w-[960px]"
             />
           </div>
 
