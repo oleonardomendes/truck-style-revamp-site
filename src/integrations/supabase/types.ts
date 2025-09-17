@@ -35,6 +35,7 @@ export type Database = {
           model_year: number | null
           multiple_units: boolean | null
           onboard_computer: boolean | null
+          owner_id: string | null
           owner_phone: string
           power_steering: boolean | null
           price: number
@@ -65,6 +66,7 @@ export type Database = {
           model_year?: number | null
           multiple_units?: boolean | null
           onboard_computer?: boolean | null
+          owner_id?: string | null
           owner_phone: string
           power_steering?: boolean | null
           price: number
@@ -95,6 +97,7 @@ export type Database = {
           model_year?: number | null
           multiple_units?: boolean | null
           onboard_computer?: boolean | null
+          owner_id?: string | null
           owner_phone?: string
           power_steering?: boolean | null
           price?: number
@@ -188,6 +191,102 @@ export type Database = {
           model_year?: number | null
           multiple_units?: boolean | null
           onboard_computer?: boolean | null
+          power_steering?: boolean | null
+          price?: number | null
+          sleeper_cabin?: boolean | null
+          traction?: string | null
+          type?: string | null
+          updated_at?: string | null
+          vehicle_details?: string | null
+          year?: number | null
+        }
+        Relationships: []
+      }
+      vehicles_secure: {
+        Row: {
+          air_conditioning: boolean | null
+          automatic_transmission: boolean | null
+          body_type: string | null
+          brand: string | null
+          category: string | null
+          climate_control: boolean | null
+          color: string | null
+          created_at: string | null
+          featured: boolean | null
+          fleet_renewal: boolean | null
+          high_roof: boolean | null
+          id: string | null
+          image: string | null
+          km: number | null
+          km_range_500_600: boolean | null
+          model: string | null
+          model_year: number | null
+          multiple_units: boolean | null
+          onboard_computer: boolean | null
+          owner_id: string | null
+          owner_phone: string | null
+          power_steering: boolean | null
+          price: number | null
+          sleeper_cabin: boolean | null
+          traction: string | null
+          type: string | null
+          updated_at: string | null
+          vehicle_details: string | null
+          year: number | null
+        }
+        Insert: {
+          air_conditioning?: boolean | null
+          automatic_transmission?: boolean | null
+          body_type?: string | null
+          brand?: string | null
+          category?: string | null
+          climate_control?: boolean | null
+          color?: string | null
+          created_at?: string | null
+          featured?: boolean | null
+          fleet_renewal?: boolean | null
+          high_roof?: boolean | null
+          id?: string | null
+          image?: string | null
+          km?: number | null
+          km_range_500_600?: boolean | null
+          model?: string | null
+          model_year?: number | null
+          multiple_units?: boolean | null
+          onboard_computer?: boolean | null
+          owner_id?: string | null
+          owner_phone?: never
+          power_steering?: boolean | null
+          price?: number | null
+          sleeper_cabin?: boolean | null
+          traction?: string | null
+          type?: string | null
+          updated_at?: string | null
+          vehicle_details?: string | null
+          year?: number | null
+        }
+        Update: {
+          air_conditioning?: boolean | null
+          automatic_transmission?: boolean | null
+          body_type?: string | null
+          brand?: string | null
+          category?: string | null
+          climate_control?: boolean | null
+          color?: string | null
+          created_at?: string | null
+          featured?: boolean | null
+          fleet_renewal?: boolean | null
+          high_roof?: boolean | null
+          id?: string | null
+          image?: string | null
+          km?: number | null
+          km_range_500_600?: boolean | null
+          model?: string | null
+          model_year?: number | null
+          multiple_units?: boolean | null
+          onboard_computer?: boolean | null
+          owner_id?: string | null
+          owner_phone?: never
           power_steering?: boolean | null
           price?: number | null
           sleeper_cabin?: boolean | null

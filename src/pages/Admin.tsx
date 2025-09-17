@@ -454,7 +454,7 @@ const AdminDashboard = () => {
   const fetchVehicles = async () => {
     try {
       const { data, error } = await supabase
-        .from('vehicles')
+        .from('vehicles_secure' as any)
         .select('*')
         .order('created_at', { ascending: false });
 
