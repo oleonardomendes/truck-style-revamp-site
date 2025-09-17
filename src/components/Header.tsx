@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, MapPin, MessageCircle } from "lucide-react";
-const modestoLogo = "/lovable-uploads/21f890e2-f157-4fc9-9288-de21d73ddf32.png";
+const modestoLogo = "/lovable-uploads/modesto-logo-new.jpeg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
