@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-type PublicVehicle = Omit<Tables<'vehicles'>, 'owner_phone'>;
+type PublicVehicle = Tables<'vehicles_public'>;
 
 const VehicleDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -308,7 +308,13 @@ const VehicleDetails = () => {
 
               {/* Botão de Contato */}
               <div className="pt-6 border-t">
-                <Button size="lg" className="w-full">
+                <Button 
+                  size="lg" 
+                  className="w-full"
+                  onClick={() => {
+                    window.open(`https://wa.me/5515998242856?text=Olá! Tenho interesse no ${vehicle.brand} ${vehicle.model} ${vehicle.year}.`, '_blank');
+                  }}
+                >
                   <Phone className="mr-2 h-4 w-4" />
                   Entrar em Contato
                 </Button>

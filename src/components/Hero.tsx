@@ -83,7 +83,7 @@ const Hero = () => {
               size="lg" 
               className="text-sm sm:text-base md:text-lg px-6 sm:px-8 py-2 sm:py-3 border-white/80 text-white bg-white/10 hover:bg-white hover:text-primary backdrop-blur-sm w-full sm:w-auto"
               onClick={() => {
-                window.open('https://wa.me/5511999999999?text=Olá! Tenho interesse em conhecer os caminhões disponíveis.', '_blank');
+                window.open('https://wa.me/5515998242856?text=Olá! Tenho interesse em conhecer os caminhões disponíveis.', '_blank');
               }}
             >
               Fale Conosco

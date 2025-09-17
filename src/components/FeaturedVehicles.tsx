@@ -14,8 +14,8 @@ import truckScaniaGreen from "@/assets/truck-scania-green.jpg";
 import truckMercedes from "@/assets/truck-mercedes.jpg";
 import truckDafWhite from "@/assets/truck-daf-white.jpg";
 
-// Public vehicle type that excludes sensitive data
-type PublicVehicle = Omit<Tables<'vehicles'>, 'owner_phone'>;
+// Using the public vehicles table type
+type PublicVehicle = Tables<'vehicles_public'>;
 
 const FeaturedVehicles = () => {
   const [vehicles, setVehicles] = useState<PublicVehicle[]>([]);

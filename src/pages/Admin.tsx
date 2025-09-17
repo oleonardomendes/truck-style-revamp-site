@@ -119,33 +119,50 @@ const VehicleForm = ({
   });
 
   const [uploading, setUploading] = useState(false);
+  const [images, setImages] = useState<string[]>(vehicle?.image ? [vehicle.image] : []);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
 
     setUploading(true);
+    const uploadedImages: string[] = [];
+
     try {
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${Math.random()}.${fileExt}`;
-      const filePath = `${fileName}`;
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Math.random()}.${fileExt}`;
+        const filePath = `${fileName}`;
 
-      const { error: uploadError } = await supabase.storage
-        .from('vehicle-images')
-        .upload(filePath, file);
+        const { error: uploadError } = await supabase.storage
+          .from('vehicle-images')
+          .upload(filePath, file);
 
-      if (uploadError) throw uploadError;
+        if (uploadError) throw uploadError;
 
-      const { data } = supabase.storage
-        .from('vehicle-images')
-        .getPublicUrl(filePath);
+        const { data } = supabase.storage
+          .from('vehicle-images')
+          .getPublicUrl(filePath);
 
-      setFormData({ ...formData, image: data.publicUrl });
+        uploadedImages.push(data.publicUrl);
+      }
+
+      const newImages = [...images, ...uploadedImages];
+      setImages(newImages);
+      // Use the first image as the main image for backward compatibility
+      setFormData({ ...formData, image: newImages[0] || '' });
     } catch (error) {
-      console.error('Error uploading image:', error);
+      console.error('Error uploading images:', error);
     } finally {
       setUploading(false);
     }
+  };
+
+  const removeImage = (index: number) => {
+    const newImages = images.filter((_, i) => i !== index);
+    setImages(newImages);
+    setFormData({ ...formData, image: newImages[0] || '' });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -265,21 +282,52 @@ const VehicleForm = ({
       </div>
 
       <div>
-        <Label htmlFor="image">Imagem do Veículo</Label>
+        <Label htmlFor="images">Imagens do Veículo</Label>
         <Input
-          id="image"
+          id="images"
           type="file"
           accept="image/*"
+          multiple
           onChange={handleImageUpload}
           className="cursor-pointer"
+          disabled={uploading}
         />
-        {formData.image && (
-          <div className="mt-2">
-            <img 
-              src={formData.image} 
-              alt="Preview" 
-              className="w-32 h-24 object-cover rounded border"
-            />
+        <p className="text-sm text-muted-foreground mt-1">
+          Selecione múltiplas imagens para o veículo. A primeira imagem será usada como principal.
+        </p>
+        
+        {images.length > 0 && (
+          <div className="mt-4">
+            <Label className="text-sm font-medium">Imagens carregadas:</Label>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-2">
+              {images.map((imageUrl, index) => (
+                <div key={index} className="relative group">
+                  <img 
+                    src={imageUrl} 
+                    alt={`Preview ${index + 1}`} 
+                    className="w-full h-24 object-cover rounded border"
+                  />
+                  <Button
+                    type="button"
+                    variant="destructive"
+                    size="icon"
+                    className="absolute -top-2 -right-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                    onClick={() => removeImage(index)}
+                  >
+                    ×
+                  </Button>
+                  {index === 0 && (
+                    <Badge className="absolute bottom-1 left-1 text-xs">Principal</Badge>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        
+        {uploading && (
+          <div className="mt-2 text-sm text-muted-foreground">
+            Carregando imagens...
           </div>
         )}
       </div>
@@ -454,16 +502,26 @@ const AdminDashboard = () => {
   const fetchVehicles = async () => {
     try {
       const { data, error } = await supabase
-        .from('vehicles_secure' as any)
+        .from('vehicles')
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Error fetching vehicles:', error);
+        toast({
+          title: "Erro",
+          description: "Não foi possível carregar os veículos.",
+          variant: "destructive",
+        });
+        return;
+      }
+
       setVehicles(data || []);
     } catch (error) {
+      console.error('Error fetching vehicles:', error);
       toast({
-        title: "Erro ao carregar veículos",
-        description: error instanceof Error ? error.message : "Erro desconhecido",
+        title: "Erro",
+        description: "Erro inesperado ao carregar veículos.",
         variant: "destructive",
       });
     } finally {

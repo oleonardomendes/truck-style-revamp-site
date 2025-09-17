@@ -25,10 +25,15 @@ const Header = () => {
               <Phone className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
               <span>(15) 99824-2856</span>
             </div>
-            <div className="flex items-center gap-1 sm:gap-2">
+            <a 
+              href="https://wa.me/5515998242856" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 sm:gap-2 hover:text-primary-foreground/80 transition-colors"
+            >
               <MessageCircle className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
               <span>WhatsApp</span>
-            </div>
+            </a>
           </div>
         </div>
       </div>
