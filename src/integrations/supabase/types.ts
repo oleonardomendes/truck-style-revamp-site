@@ -300,6 +300,10 @@ export type Database = {
       }
     }
     Functions: {
+      get_public_vehicle_data: {
+        Args: { vehicle_row: Database["public"]["Tables"]["vehicles"]["Row"] }
+        Returns: boolean
+      }
       get_public_vehicle_fields: {
         Args: Record<PropertyKey, never>
         Returns: string

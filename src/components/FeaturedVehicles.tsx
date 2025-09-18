@@ -45,6 +45,7 @@ const FeaturedVehicles = () => {
 
   const fetchVehicles = async () => {
     try {
+      // Usar a view pública que NÃO contém dados sensíveis como telefone
       const { data, error } = await supabase
         .from('vehicles_public')
         .select(`
