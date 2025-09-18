@@ -12,11 +12,40 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-type PublicVehicle = Tables<'vehicles_public'>;
+// Tipo para veículos sem dados sensíveis
+interface SafeVehicle {
+  id: string;
+  brand: string;
+  model: string;
+  year: number;
+  model_year?: number;
+  price: number;
+  km: number;
+  type: string;
+  category: string;
+  image?: string;
+  featured?: boolean;
+  created_at: string;
+  updated_at: string;
+  traction?: string;
+  body_type?: string;
+  color?: string;
+  power_steering?: boolean;
+  high_roof?: boolean;
+  air_conditioning?: boolean;
+  climate_control?: boolean;
+  sleeper_cabin?: boolean;
+  onboard_computer?: boolean;
+  automatic_transmission?: boolean;
+  vehicle_details?: string;
+  multiple_units?: boolean;
+  fleet_renewal?: boolean;
+  km_range_500_600?: boolean;
+}
 
 const VehicleDetails = () => {
   const { id } = useParams<{ id: string }>();
-  const [vehicle, setVehicle] = useState<PublicVehicle | null>(null);
+  const [vehicle, setVehicle] = useState<SafeVehicle | null>(null);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
@@ -28,8 +57,9 @@ const VehicleDetails = () => {
 
   const fetchVehicleDetails = async () => {
     try {
+      // Buscar da tabela principal mas EXCLUIR campos sensíveis como owner_phone
       const { data, error } = await supabase
-        .from('vehicles_public')
+        .from('vehicles')
         .select(`
           id, brand, model, year, model_year, price, km, type, category, 
           image, featured, created_at, updated_at, traction, body_type,
@@ -38,7 +68,7 @@ const VehicleDetails = () => {
           multiple_units, fleet_renewal, km_range_500_600
         `)
         .eq('id', id)
-        .single();
+        .maybeSingle();
 
       if (error) throw error;
       setVehicle(data);

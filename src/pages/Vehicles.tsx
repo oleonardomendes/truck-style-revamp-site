@@ -32,9 +32,16 @@ const Vehicles = () => {
 
   const fetchVehicles = async () => {
     try {
+      // Buscar da tabela principal mas EXCLUIR campos sensíveis como owner_phone
       const { data, error } = await supabase
-        .from('vehicles_public')
-        .select('*')
+        .from('vehicles')
+        .select(`
+          id, brand, model, year, model_year, price, km, type, category, 
+          image, featured, created_at, updated_at, traction, body_type,
+          color, power_steering, high_roof, air_conditioning, climate_control,
+          sleeper_cabin, onboard_computer, automatic_transmission, vehicle_details,
+          multiple_units, fleet_renewal, km_range_500_600
+        `)
         .order('created_at', { ascending: false });
 
       if (error) throw error;
