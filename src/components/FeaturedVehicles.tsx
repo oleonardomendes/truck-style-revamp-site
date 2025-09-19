@@ -15,7 +15,35 @@ import truckMercedes from "@/assets/truck-mercedes.jpg";
 import truckDafWhite from "@/assets/truck-daf-white.jpg";
 
 // Using the public vehicles table type
-type PublicVehicle = Tables<'vehicles_public'>;
+interface PublicVehicle {
+  id: string;
+  brand: string;
+  model: string;
+  year: number;
+  model_year?: number | null;
+  price: number;
+  km: number;
+  type: string;
+  category: string;
+  image?: string | null;
+  featured?: boolean | null;
+  created_at: string;
+  updated_at: string;
+  traction?: string | null;
+  body_type?: string | null;
+  color?: string | null;
+  power_steering?: boolean | null;
+  high_roof?: boolean | null;
+  air_conditioning?: boolean | null;
+  climate_control?: boolean | null;
+  sleeper_cabin?: boolean | null;
+  onboard_computer?: boolean | null;
+  automatic_transmission?: boolean | null;
+  vehicle_details?: string | null;
+  multiple_units?: boolean | null;
+  fleet_renewal?: boolean | null;
+  km_range_500_600?: boolean | null;
+}
 
 const FeaturedVehicles = () => {
   const [vehicles, setVehicles] = useState<PublicVehicle[]>([]);
@@ -47,7 +75,7 @@ const FeaturedVehicles = () => {
     try {
       // Buscar da tabela principal mas EXCLUIR campos sensíveis como owner_phone
       const { data, error } = await supabase
-        .from('vehicles_public')
+        .from('vehicles')
         .select(`
           id, brand, model, year, model_year, price, km, type, category, 
           image, featured, created_at, updated_at, traction, body_type,
