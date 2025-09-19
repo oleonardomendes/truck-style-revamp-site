@@ -59,7 +59,7 @@ const VehicleDetails = () => {
     try {
       // Buscar da tabela principal mas EXCLUIR campos sensíveis como owner_phone
       const { data, error } = await supabase
-        .from('vehicles')
+        .from('vehicles_public')
         .select(`
           id, brand, model, year, model_year, price, km, type, category, 
           image, featured, created_at, updated_at, traction, body_type,
