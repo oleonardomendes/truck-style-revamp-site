@@ -1,28 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import heroImage from "@/assets/hero-trucks.jpg";
-import heroImage2 from "@/assets/hero-trucks-2.jpg";
-import heroImage3 from "@/assets/hero-trucks-3.jpg";
+const modestoLogo = "/lovable-uploads/modesto-logo-new.jpeg";
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const slides = [
     {
-      image: heroImage,
       title: "Sua Próxima Oportunidade",
       subtitle: "Caminhões seminovos de qualidade",
       description: "Encontre o veículo ideal para seu negócio com as melhores condições do mercado"
     },
     {
-      image: heroImage2,
       title: "Tradição e Confiança",
       subtitle: "Mais de 20 anos no mercado",
       description: "Especialistas em caminhões seminovos com garantia e procedência"
     },
     {
-      image: heroImage3,
       title: "Financiamento Facilitado",
       subtitle: "Condições especiais",
       description: "Parcelamento em até 60x com as menores taxas do mercado"
@@ -46,14 +41,14 @@ const Hero = () => {
 
   return (
     <section className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
-      {/* Background with overlay */}
+      {/* Background with logo and overlay */}
       <div className="absolute inset-0">
         <img 
-          src={slides[currentSlide].image} 
-          alt="Caminhões Modesto" 
-          className="w-full h-full object-cover object-center"
+          src={modestoLogo} 
+          alt="Modesto Caminhões Logo" 
+          className="w-full h-full object-contain object-center opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/60 to-primary/30 sm:from-primary/80 sm:via-primary/40 sm:to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/75"></div>
       </div>
 
       {/* Content */}
