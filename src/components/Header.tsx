@@ -42,10 +42,15 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo Text */}
-          <div className="flex items-center">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
-              Modesto Caminhões
-            </h1>
+          <div className="flex flex-col items-start leading-none">
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#1a4b5c] tracking-wide uppercase" 
+                  style={{ fontFamily: 'serif', textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
+              MODESTO
+            </span>
+            <span className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#1a4b5c] -mt-1 sm:-mt-2 italic font-semibold"
+                  style={{ fontFamily: 'Georgia, serif', textShadow: '1px 1px 2px rgba(0,0,0,0.2)' }}>
+              Caminhões
+            </span>
           </div>
 
           {/* Desktop Navigation */}
