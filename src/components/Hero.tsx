@@ -46,9 +46,9 @@ const Hero = () => {
         <img 
           src={modestoLogo} 
           alt="Modesto Caminhões Logo" 
-          className="w-full h-full object-contain object-center opacity-20"
+          className="w-full h-full object-contain object-center opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/75"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/75 via-primary/60 to-primary/45"></div>
       </div>
 
       {/* Content */}

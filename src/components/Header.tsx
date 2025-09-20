@@ -41,13 +41,11 @@ const Header = () => {
       {/* Main navigation */}
       <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo Text */}
           <div className="flex items-center">
-            <img 
-              src={modestoLogo} 
-              alt="Modesto Caminhões" 
-              className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto max-w-[480px] sm:max-w-[600px] md:max-w-[720px] lg:max-w-[840px] xl:max-w-[960px]"
-            />
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary">
+              Modesto Caminhões
+            </h1>
           </div>
 
           {/* Desktop Navigation */}
