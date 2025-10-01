@@ -1,8 +1,28 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Shield, CreditCard, Wrench, Phone } from "lucide-react";
+import { Award, CheckCircle, Wrench, Phone, TrendingUp, FileCheck } from "lucide-react";
 
 const Services = () => {
   const services = [
+    {
+      icon: Award,
+      title: "Confiança e Tradição",
+      description: "Mais de 20 anos no mercado, construindo relações duradouras com nossos clientes."
+    },
+    {
+      icon: CheckCircle,
+      title: "Qualidade Garantida",
+      description: "Todos os caminhões passam por rigorosa inspeção técnica antes da venda."
+    },
+    {
+      icon: FileCheck,
+      title: "Procedência Certificada",
+      description: "Veículos com documentação completa e histórico de manutenção verificado."
+    },
+    {
+      icon: TrendingUp,
+      title: "Melhor Custo-Benefício",
+      description: "Preços justos e competitivos para você fazer o melhor negócio."
+    },
     {
       icon: Wrench,
       title: "Pós-Venda Completo",
@@ -10,7 +30,7 @@ const Services = () => {
     },
     {
       icon: Phone,
-      title: "Atendimento 24h",
+      title: "Atendimento Personalizado",
       description: "Nossa equipe está sempre disponível para tirar suas dúvidas e oferecer suporte."
     }
   ];
@@ -27,7 +47,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {services.map((service, index) => (
             <Card 
               key={index}
