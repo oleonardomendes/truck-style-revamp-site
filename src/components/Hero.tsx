@@ -36,26 +36,25 @@ const Hero = () => {
 
   return (
     <section className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
-      {/* Background with logo and overlay */}
-      <div className="absolute inset-0">
+      {/* Background with logo (no overlay) */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-primary/20">
         <img 
           src={modestoLogo} 
           alt="Modesto Caminhões Logo" 
-          className="w-full h-full object-contain object-center opacity-40"
+          className="w-full h-full object-contain object-center"
         />
-        <div className="absolute inset-0 bg-primary/40"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 h-full flex items-center">
-        <div className="max-w-xs sm:max-w-lg md:max-w-2xl text-white animate-fade-in">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 leading-tight">
+        <div className="max-w-xs sm:max-w-lg md:max-w-2xl animate-fade-in">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 leading-tight text-foreground">
             {slides[currentSlide].title}
           </h1>
-          <h2 className="text-sm sm:text-lg md:text-xl lg:text-2xl mb-4 sm:mb-6 text-orange-300">
+          <h2 className="text-sm sm:text-lg md:text-xl lg:text-2xl mb-4 sm:mb-6 text-primary">
             {slides[currentSlide].subtitle}
           </h2>
-          <p className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 text-white/90 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 text-muted-foreground leading-relaxed">
             {slides[currentSlide].description}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -71,7 +70,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="lg" 
-              className="text-sm sm:text-base md:text-lg px-6 sm:px-8 py-2 sm:py-3 border-white/80 text-white bg-white/10 hover:bg-white hover:text-primary backdrop-blur-sm w-full sm:w-auto"
+              className="text-sm sm:text-base md:text-lg px-6 sm:px-8 py-2 sm:py-3 w-full sm:w-auto"
               onClick={() => {
                 window.open('https://wa.me/5515998242856?text=Olá! Tenho interesse em conhecer os caminhões disponíveis.', '_blank');
               }}
@@ -86,7 +85,7 @@ const Hero = () => {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-foreground hover:bg-primary/20 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
         onClick={prevSlide}
       >
         <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
@@ -94,7 +93,7 @@ const Hero = () => {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-foreground hover:bg-primary/20 h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
         onClick={nextSlide}
       >
         <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
@@ -106,7 +105,7 @@ const Hero = () => {
           <button
             key={index}
             className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
-              index === currentSlide ? 'bg-white' : 'bg-white/50'
+              index === currentSlide ? 'bg-primary' : 'bg-primary/50'
             }`}
             onClick={() => setCurrentSlide(index)}
           />
