@@ -299,13 +299,13 @@ const VehicleForm = ({
         {images.length > 0 && (
           <div className="mt-4">
             <Label className="text-sm font-medium">Imagens carregadas:</Label>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-2">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
               {images.map((imageUrl, index) => (
-                <div key={index} className="relative group">
+                <div key={index} className="relative group aspect-video">
                   <img 
                     src={imageUrl} 
                     alt={`Preview ${index + 1}`} 
-                    className="w-full h-24 object-cover rounded border"
+                    className="w-full h-full object-cover rounded border"
                   />
                   <Button
                     type="button"
