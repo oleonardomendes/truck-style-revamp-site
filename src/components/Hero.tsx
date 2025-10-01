@@ -15,12 +15,7 @@ const Hero = () => {
     {
       title: "Tradição e Confiança",
       subtitle: "Mais de 20 anos no mercado",
-      description: "Especialistas em caminhões seminovos com garantia e procedência"
-    },
-    {
-      title: "Financiamento Facilitado",
-      subtitle: "Condições especiais",
-      description: "Parcelamento em até 60x com as menores taxas do mercado"
+      description: "Especialistas em caminhões seminovos de qualidade e procedência"
     }
   ];
 
@@ -48,7 +43,7 @@ const Hero = () => {
           alt="Modesto Caminhões Logo" 
           className="w-full h-full object-contain object-center opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/75 via-primary/60 to-primary/45"></div>
+        <div className="absolute inset-0 bg-primary/40"></div>
       </div>
 
       {/* Content */}

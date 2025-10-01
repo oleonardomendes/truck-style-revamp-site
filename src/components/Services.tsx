@@ -4,16 +4,6 @@ import { Shield, CreditCard, Wrench, Phone } from "lucide-react";
 const Services = () => {
   const services = [
     {
-      icon: Shield,
-      title: "Garantia de Qualidade",
-      description: "Todos os nossos veículos passam por rigorosa inspeção técnica antes da venda."
-    },
-    {
-      icon: CreditCard,
-      title: "Financiamento Facilitado",
-      description: "Parcele em até 60x com as menores taxas do mercado e aprovação rápida."
-    },
-    {
       icon: Wrench,
       title: "Pós-Venda Completo",
       description: "Suporte técnico especializado e peças originais para manter seu caminhão rodando."
