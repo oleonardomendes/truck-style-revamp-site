@@ -119,7 +119,13 @@ const VehicleForm = ({
   });
 
   const [uploading, setUploading] = useState(false);
-  const [images, setImages] = useState<string[]>(vehicle?.image ? [vehicle.image] : []);
+  const [images, setImages] = useState<string[]>(
+    vehicle?.images && vehicle.images.length > 0 
+      ? vehicle.images 
+      : vehicle?.image 
+        ? [vehicle.image] 
+        : []
+  );
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -167,7 +173,8 @@ const VehicleForm = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formData);
+    // Include images array in the form data
+    onSubmit({ ...formData, images });
   };
 
   return (

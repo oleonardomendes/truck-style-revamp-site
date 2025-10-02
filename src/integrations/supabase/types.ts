@@ -29,6 +29,7 @@ export type Database = {
           high_roof: boolean | null
           id: string
           image: string | null
+          images: string[] | null
           km: number
           km_range_500_600: boolean | null
           model: string
@@ -60,6 +61,7 @@ export type Database = {
           high_roof?: boolean | null
           id?: string
           image?: string | null
+          images?: string[] | null
           km: number
           km_range_500_600?: boolean | null
           model: string
@@ -91,6 +93,7 @@ export type Database = {
           high_roof?: boolean | null
           id?: string
           image?: string | null
+          images?: string[] | null
           km?: number
           km_range_500_600?: boolean | null
           model?: string

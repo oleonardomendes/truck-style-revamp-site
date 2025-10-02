@@ -11,6 +11,13 @@ import {
   Palette, Settings, Wind, Bed, Computer, Navigation
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 // Tipo para veículos sem dados sensíveis
 interface SafeVehicle {
@@ -24,6 +31,7 @@ interface SafeVehicle {
   type: string;
   category: string;
   image?: string;
+  images?: string[];
   featured?: boolean;
   created_at: string;
   updated_at: string;
@@ -62,7 +70,7 @@ const VehicleDetails = () => {
         .from('vehicles')
         .select(`
           id, brand, model, year, model_year, price, km, type, category, 
-          image, featured, created_at, updated_at, traction, body_type,
+          image, images, featured, created_at, updated_at, traction, body_type,
           color, power_steering, high_roof, air_conditioning, climate_control,
           sleeper_cabin, onboard_computer, automatic_transmission, vehicle_details,
           multiple_units, fleet_renewal, km_range_500_600
@@ -134,22 +142,46 @@ const VehicleDetails = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Imagem do Veículo */}
+          {/* Imagens do Veículo - Carousel */}
           <Card className="overflow-hidden">
             <CardContent className="p-0">
               <div className="aspect-video relative">
-                <img
-                  src={vehicle.image || "/placeholder.svg"}
-                  alt={`${vehicle.brand} ${vehicle.model}`}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-4 left-4">
+                {vehicle.images && vehicle.images.length > 0 ? (
+                  <Carousel className="w-full h-full">
+                    <CarouselContent>
+                      {vehicle.images.map((imageUrl, index) => (
+                        <CarouselItem key={index}>
+                          <div className="aspect-video relative">
+                            <img
+                              src={imageUrl}
+                              alt={`${vehicle.brand} ${vehicle.model} - Imagem ${index + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    {vehicle.images.length > 1 && (
+                      <>
+                        <CarouselPrevious className="left-2" />
+                        <CarouselNext className="right-2" />
+                      </>
+                    )}
+                  </Carousel>
+                ) : (
+                  <img
+                    src={vehicle.image || "/placeholder.svg"}
+                    alt={`${vehicle.brand} ${vehicle.model}`}
+                    className="w-full h-full object-cover"
+                  />
+                )}
+                <div className="absolute top-4 left-4 z-10">
                   <Badge variant="secondary" className="bg-primary/20 text-primary">
                     {vehicle.category}
                   </Badge>
                 </div>
                 {vehicle.featured && (
-                  <div className="absolute top-4 right-4">
+                  <div className="absolute top-4 right-4 z-10">
                     <Badge className="bg-accent text-accent-foreground">
                       Destaque
                     </Badge>
