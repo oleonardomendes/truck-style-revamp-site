@@ -41,13 +41,13 @@ const Hero = () => {
         <img 
           src={modestoLogo} 
           alt="Modesto Caminhões Logo" 
-          className="w-full h-full object-contain object-right opacity-30 lg:opacity-40"
+          className="w-full h-full object-contain object-right"
         />
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 h-full flex items-center">
-        <div className="max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl animate-fade-in bg-background/60 backdrop-blur-sm p-6 sm:p-8 rounded-lg">
+        <div className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl animate-fade-in bg-background/60 backdrop-blur-sm p-6 sm:p-8 rounded-lg">
           <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 leading-tight text-foreground">
             {slides[currentSlide].title}
           </h1>
