@@ -145,17 +145,17 @@ const VehicleDetails = () => {
           {/* Imagens do Veículo - Carousel */}
           <Card className="overflow-hidden">
             <CardContent className="p-0">
-              <div className="aspect-video relative">
+              <div className="relative">
                 {vehicle.images && vehicle.images.length > 0 ? (
-                  <Carousel className="w-full h-full">
+                  <Carousel className="w-full">
                     <CarouselContent>
                       {vehicle.images.map((imageUrl, index) => (
                         <CarouselItem key={index}>
-                          <div className="aspect-video relative">
+                          <div className="relative">
                             <img
                               src={imageUrl}
                               alt={`${vehicle.brand} ${vehicle.model} - Imagem ${index + 1}`}
-                              className="w-full h-full object-cover"
+                              className="w-full object-contain"
                             />
                           </div>
                         </CarouselItem>
@@ -172,7 +172,7 @@ const VehicleDetails = () => {
                   <img
                     src={vehicle.image || "/placeholder.svg"}
                     alt={`${vehicle.brand} ${vehicle.model}`}
-                    className="w-full h-full object-cover"
+                    className="w-full object-contain"
                   />
                 )}
                 <div className="absolute top-4 left-4 z-10">

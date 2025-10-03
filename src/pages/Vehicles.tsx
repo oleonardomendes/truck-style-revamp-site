@@ -120,7 +120,7 @@ const Vehicles = () => {
                       <img 
                         src={vehicle.image} 
                         alt={`${vehicle.brand} ${vehicle.model}`}
-                        className="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full object-contain group-hover:scale-105 transition-transform duration-300"
                       />
                     ) : (
                       <div className="w-full h-48 sm:h-56 bg-muted flex items-center justify-center">
