@@ -115,17 +115,15 @@ const Vehicles = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
               {vehicles.map((vehicle) => (
                 <Card key={vehicle.id} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 group">
-                  <div className="relative">
+                  <div className="relative h-48 sm:h-56 bg-muted flex items-center justify-center overflow-hidden">
                     {vehicle.image ? (
                       <img 
                         src={vehicle.image} 
                         alt={`${vehicle.brand} ${vehicle.model}`}
-                        className="w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                       />
                     ) : (
-                      <div className="w-full h-48 sm:h-56 bg-muted flex items-center justify-center">
-                        <Truck className="h-12 w-12 text-muted-foreground" />
-                      </div>
+                      <Truck className="h-12 w-12 text-muted-foreground" />
                     )}
                     {vehicle.featured && (
                       <Badge className="absolute top-2 left-2 bg-primary text-primary-foreground">
