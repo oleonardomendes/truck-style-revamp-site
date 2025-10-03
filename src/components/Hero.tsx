@@ -35,13 +35,13 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px] overflow-hidden">
+    <section className="relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
       {/* Background with logo (no overlay) */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-primary/20">
         <img 
           src={modestoLogo} 
           alt="Modesto Caminhões Logo" 
-          className="w-full h-full object-cover object-right"
+          className="w-full h-full object-contain object-right"
         />
       </div>
 
